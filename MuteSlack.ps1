@@ -53,12 +53,7 @@ function ExecutionShouldContinue {
     $choices = '&Yes', '&No'
 
     $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-    if ($decision -eq 0) {
-        return $true
-    }
-    else {
-        return $false
-    }
+    return ($decision -eq 0)
 }
 
 function Wait-For-Keypress {
@@ -73,3 +68,4 @@ function ExitWithMessage([string]$messageToDisplay) {
 }
 
 Main
+
