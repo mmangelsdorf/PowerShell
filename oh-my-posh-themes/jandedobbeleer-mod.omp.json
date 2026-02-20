@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": " \uf74a ",
+          "foreground": "#ffffff",
+          "background": "#6b69d6",
+          "type": "text",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_separator_icon": "\\",
+            "home_icon": "~",
+            "mapped_locations": {
+              "C:\\SpheraDevelopment": "C:\\dev"
+            },
+            "style": "full"
+          },
+          "template": "{{ .Path }} ",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "background": "#6b69d6",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "branch_max_length": 50,
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": false
+          },
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "background": "#95ffa4",
+          "type": "git",
+          "style": "powerline",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffe9aa{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff9248{{ end }}",
+            "{{ if gt .Ahead 0 }}#906cff{{ end }}",
+            "{{ if gt .Behind 0 }}#906cff{{ end }}"
+          ]
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "fetch_virtual_env": false
+          },
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "foreground": "#111111",
+          "powerline_symbol": "\ue0b0",
+          "background": "#ffde57",
+          "type": "python",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf0ad ",
+          "foreground": "#111111",
+          "powerline_symbol": "\ue0b0",
+          "background": "#ffff66",
+          "type": "root",
+          "style": "powerline"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": " {{ .FormattedMs }} ",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b2",
+          "background": "#00897b",
+          "type": "executiontime",
+          "style": "powerline",
+          "background_templates": [
+            "{{ if gt .Code 0 }}#e91e63{{ end }}"
+          ],
+          "invert_powerline": true
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b2",
+          "background": "#193549",
+          "type": "time",
+          "style": "powerline",
+          "invert_powerline": true
+        },
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": "\uf43a ",
+          "foreground": "#ffffff",
+          "background": "#193549",
+          "type": "text",
+          "style": "powerline"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "❯ ",
+          "foreground": "#6b69d6",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3
+}
